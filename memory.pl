@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-#for i in {1..10}; do ./randomstring.pl; done
+#for i in {1..10}; do ./memory.pl; done
 
 use strict;
 use warnings;
@@ -18,8 +18,8 @@ my @stack = ();
 my $data = '';
 
 #length of the random string
-my $min_length = 1000;
-my $max_length = 9000;
+my $min_length = 100000;
+my $max_length = 900000;
 my $length = 0;
 
 #set to not zero when you read for an infinite loop
@@ -46,6 +46,7 @@ for ( ; ; )
 	unlink $string;
 	unlink $size; 
 	unlink $howbig;
+	pop @stack;
 	if ( $sleep_seconds ) {	sleep ( $sleep_seconds ); }
 	if ( !$endless ) { last; }
 }
