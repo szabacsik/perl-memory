@@ -15,7 +15,7 @@ local $| = 1;
 my @stack = ();
 
 #scalar variable will hold random string
-my $data = '';
+#my $data = '';
 
 #length of the random string
 my $min_length = 100000;
@@ -46,7 +46,11 @@ for ( ; ; )
 	unlink $string;
 	unlink $size; 
 	unlink $howbig;
-	pop @stack;
+	#pop @stack;
+	if ( $line_count > 3 )
+	{
+		splice ( @stack, 2, 1 );
+	}
 	if ( $sleep_seconds ) {	sleep ( $sleep_seconds ); }
 	if ( !$endless ) { last; }
 }
