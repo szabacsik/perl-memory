@@ -42,15 +42,15 @@ for ( ; ; )
 	print "New line of length $length added. ";
 	print "Stack has $line_count lines of strings. ";
 	print "Stack size is $howbig bytes now.\r";
-	unlink $line_count;
-	unlink $string;
-	unlink $size; 
-	unlink $howbig;
+	undef $string;
+	undef $size; 
+	undef $howbig;
 	#pop @stack;
-	if ( $line_count > 3 )
+	if ( $line_count >= 3 )
 	{
 		splice ( @stack, 2, 1 );
 	}
+	undef $line_count;
 	if ( $sleep_seconds ) {	sleep ( $sleep_seconds ); }
 	if ( !$endless ) { last; }
 }
