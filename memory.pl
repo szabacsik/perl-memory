@@ -62,15 +62,11 @@ sub check_things
 sub remove_from_stack
 {
 	my $line_count = scalar @stack;	
-	#undef $string;
-	#undef $size; 
-	#undef $howbig;
 	#pop @stack;
 	if ( $line_count >= 3 )
 	{
 		splice ( @stack, 2, 1 );
 	}
-	#undef $line_count;
 }
 
 #random string function
