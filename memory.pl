@@ -31,10 +31,25 @@ my $sleep_seconds = 0;
 #main loop
 for ( ; ; )
 {
+	add_to_stack ();
+	remove_from_stack ();
+	check_things ();
+	if ( $sleep_seconds ) {	sleep ( $sleep_seconds ); }
+	if ( !$endless ) { last; }
+}
+
+exit 0;
+
+sub add_to_stack
+{
 	$length = $min_length + int rand ( $max_length );
 	my $string = randStr ( $length );
 	$length = length $string;
 	push @stack, $string;
+}
+
+sub check_things
+{
 	my $line_count = scalar @stack;
 	my $size = "@stack"; 
 	my $howbig = length $size;
@@ -42,20 +57,21 @@ for ( ; ; )
 	print "New line of length $length added. ";
 	print "Stack has $line_count lines of strings. ";
 	print "Stack size is $howbig bytes now.\r";
-	undef $string;
-	undef $size; 
-	undef $howbig;
+}
+
+sub remove_from_stack
+{
+	my $line_count = scalar @stack;	
+	#undef $string;
+	#undef $size; 
+	#undef $howbig;
 	#pop @stack;
 	if ( $line_count >= 3 )
 	{
 		splice ( @stack, 2, 1 );
 	}
-	undef $line_count;
-	if ( $sleep_seconds ) {	sleep ( $sleep_seconds ); }
-	if ( !$endless ) { last; }
+	#undef $line_count;
 }
-
-exit 0;
 
 #random string function
 sub randStr {
